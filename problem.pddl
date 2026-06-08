@@ -31,19 +31,30 @@
     (hotel-en h-lon londres)   (= (precio-hotel h-lon) 120)
     (hotel-en h-rom roma)      (= (precio-hotel h-rom) 90)
 
-    ;; Conexiones
+    ;; Conexiones de ida
     (vuelo barcelona paris) (= (precio-vuelo barcelona paris) 50)
     (vuelo paris londres)   (= (precio-vuelo paris londres) 80)
     (vuelo londres roma)    (= (precio-vuelo londres roma) 70)
+
+    ;; Conexiones de vuelta 
+    (vuelo paris barcelona) (= (precio-vuelo paris barcelona) 55)
+    (vuelo londres paris)   (= (precio-vuelo londres paris) 85)
+    (vuelo roma londres)    (= (precio-vuelo roma londres) 75)
+
+    ;; Connexiones alternativas (per donar joc a l'Extensió 4, optimització)
+    (vuelo barcelona roma)  (= (precio-vuelo barcelona roma) 120)
+    (vuelo roma barcelona)  (= (precio-vuelo roma barcelona) 110)
+    (vuelo paris roma)      (= (precio-vuelo paris roma) 90)
+    (vuelo roma paris)      (= (precio-vuelo roma paris) 95)
   )
 
   (:goal
     (and
-      (viaje-finalizado)
       (>= (num-ciudades-visitadas) 3)
       (>= (total-dias) 6)
-      (<= (total-precio) 1500)
       (>= (total-precio) 500)
+      (<= (total-precio) 1500)
+      (viaje-finalizado)
     )
   )
 
