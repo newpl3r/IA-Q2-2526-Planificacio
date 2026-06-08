@@ -13,7 +13,7 @@
     (= (num-ciudades-visitadas) 0)
     (= (dias-estancia-actual) 0)
 
-    ;; Interès de les ciutats (1 és el màxim interès)
+    ;; Interés de las ciudades (1 es el máxima interés)
     (= (interes-ciudad barcelona) 2)
     (= (interes-ciudad paris) 1)
     (= (interes-ciudad londres) 2)
@@ -27,7 +27,7 @@
     (= (min-dias-ciudad roma) 2)      (= (max-dias-ciudad roma) 3)
     (= (min-dias-ciudad berlin) 2)    (= (max-dias-ciudad berlin) 4)
 
-    ;; Hoteles (Berlín és molt barat, Londres molt car)
+    ;; Hoteles 
     (hotel-en h-bcn barcelona) (= (precio-hotel h-bcn) 100)
     (hotel-en h-par paris)     (= (precio-hotel h-par) 120)
     (hotel-en h-lon londres)   (= (precio-hotel h-lon) 180)
@@ -53,8 +53,8 @@
 
   (:goal
     (and
-      (>= (num-ciudades-visitadas) 4) ;; Ara demanem 4 ciutats
-      (>= (total-dias) 8)             ;; Més dies mínims
+      (>= (num-ciudades-visitadas) 4) 
+      (>= (total-dias) 8)            
       (>= (total-precio) 400)         
       (<= (total-precio) 2000)
       (viaje-finalizado)
