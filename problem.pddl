@@ -19,7 +19,7 @@
     (= (interes-ciudad londres) 2)
     (= (interes-ciudad roma) 1)
 
-    ;; Días mínimos y máximos (Extensión 1)
+    ;; Días mínimos y máximos 
     (= (min-dias-ciudad barcelona) 2) (= (max-dias-ciudad barcelona) 4)
     (= (min-dias-ciudad paris) 2)     (= (max-dias-ciudad paris) 3)
     (= (min-dias-ciudad londres) 1)   (= (max-dias-ciudad londres) 2)
