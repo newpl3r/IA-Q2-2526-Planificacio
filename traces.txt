@@ -1,0 +1,190 @@
+--- TRAÇA JOC DE PROVA 1 --- 
+
+ff: parsing domain file
+domain 'AGENCIA-VIAJES' defined
+ ... done.
+ff: parsing problem file
+problem 'ITINERARIO-VERANO' defined
+ ... done.
+
+metric established (normalized to minimize): ((0.10*[RF4](TOTAL-PRECIO)10.00*[RF3](TOTAL-INTERES)) - () + 0.00)
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
+    metric is ((0.10*[RF4](TOTAL-PRECIO)10.00*[RF3](TOTAL-INTERES)) - () + 0.00)
+
+advancing to distance:    7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: INICIAR-VIAJE BARCELONA H-BCN
+        1: EXTENDER-ESTANCIA BARCELONA H-BCN
+        2: EXTENDER-ESTANCIA BARCELONA H-BCN
+        3: VOLAR-Y-ALOJARSE BARCELONA ROMA H-BCN H-ROM
+        4: EXTENDER-ESTANCIA ROMA H-ROM
+        5: VOLAR-Y-ALOJARSE ROMA LONDRES H-ROM H-LON
+        6: FINALIZAR-VIAJE LONDRES
+
+time spent:    0.01 seconds instantiating 64 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 20 facts and 64 actions
+               0.00 seconds creating final representation with 20 relevant facts, 7 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 22 states, to a max depth of 0
+               0.01 seconds total time
+
+
+--- TRAÇA JOC DE PROVA 2 ---
+
+-- Experiment A (Prioritzar el PREU) --  
+
+ff: parsing domain file
+domain 'AGENCIA-VIAJES' defined
+ ... done.
+ff: parsing problem file
+problem 'ITINERARIO-LARGO' defined
+ ... done.
+
+metric established (normalized to minimize): ((1.00*[RF4](TOTAL-PRECIO)) - () + 0.00)
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
+    metric is ((1.00*[RF4](TOTAL-PRECIO)) - () + 0.00)
+
+advancing to distance:    9
+                          8
+                          7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: INICIAR-VIAJE PARIS H-PAR
+        1: EXTENDER-ESTANCIA PARIS H-PAR
+        2: VOLAR-Y-ALOJARSE PARIS LONDRES H-PAR H-LON
+        3: EXTENDER-ESTANCIA LONDRES H-LON
+        4: VOLAR-Y-ALOJARSE LONDRES BERLIN H-LON H-BER
+        5: EXTENDER-ESTANCIA BERLIN H-BER
+        6: VOLAR-Y-ALOJARSE BERLIN ROMA H-BER H-ROM
+        7: EXTENDER-ESTANCIA ROMA H-ROM
+        8: FINALIZAR-VIAJE ROMA
+
+time spent:    0.01 seconds instantiating 85 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 24 facts and 85 actions
+               0.00 seconds creating final representation with 24 relevant facts, 7 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 23 states, to a max depth of 0
+               0.01 seconds total time
+
+
+-- Experiment B (Prioritzar l'INTERÈS) --
+
+ff: parsing domain file
+domain 'AGENCIA-VIAJES' defined
+ ... done.
+ff: parsing problem file
+problem 'ITINERARIO-LARGO' defined
+ ... done.
+
+metric established (normalized to minimize): ((10.00*[RF3](TOTAL-INTERES)) - () + 0.00)
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
+    metric is ((10.00*[RF3](TOTAL-INTERES)) - () + 0.00)
+
+advancing to distance:    9
+                          8
+                          7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: INICIAR-VIAJE BARCELONA H-BCN
+        1: EXTENDER-ESTANCIA BARCELONA H-BCN
+        2: EXTENDER-ESTANCIA BARCELONA H-BCN
+        3: VOLAR-Y-ALOJARSE BARCELONA ROMA H-BCN H-ROM
+        4: EXTENDER-ESTANCIA ROMA H-ROM
+        5: VOLAR-Y-ALOJARSE ROMA BERLIN H-ROM H-BER
+        6: EXTENDER-ESTANCIA BERLIN H-BER
+        7: VOLAR-Y-ALOJARSE BERLIN LONDRES H-BER H-LON
+        8: EXTENDER-ESTANCIA LONDRES H-LON
+        9: EXTENDER-ESTANCIA LONDRES H-LON
+       10: FINALIZAR-VIAJE LONDRES
+
+time spent:    0.00 seconds instantiating 85 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 24 facts and 85 actions
+               0.00 seconds creating final representation with 24 relevant facts, 7 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 31 states, to a max depth of 0
+               0.00 seconds total time
+
+
+-- Experiment C (Mètrica MIXTA) --
+
+ff: parsing domain file
+domain 'AGENCIA-VIAJES' defined
+ ... done.
+ff: parsing problem file
+problem 'ITINERARIO-LARGO' defined
+ ... done.
+
+metric established (normalized to minimize): ((0.50*[RF4](TOTAL-PRECIO)10.00*[RF3](TOTAL-INTERES)) - () + 0.00)
+
+checking for cyclic := effects --- OK.
+
+ff: search configuration is  best-first on 1*g(s) + 5*h(s) where
+    metric is ((0.50*[RF4](TOTAL-PRECIO)10.00*[RF3](TOTAL-INTERES)) - () + 0.00)
+
+advancing to distance:    9
+                          8
+                          7
+                          6
+                          5
+                          4
+                          3
+                          2
+                          1
+                          0
+
+ff: found legal plan as follows
+
+step    0: INICIAR-VIAJE PARIS H-PAR
+        1: EXTENDER-ESTANCIA PARIS H-PAR
+        2: VOLAR-Y-ALOJARSE PARIS LONDRES H-PAR H-LON
+        3: EXTENDER-ESTANCIA LONDRES H-LON
+        4: VOLAR-Y-ALOJARSE LONDRES BERLIN H-LON H-BER
+        5: EXTENDER-ESTANCIA BERLIN H-BER
+        6: VOLAR-Y-ALOJARSE BERLIN ROMA H-BER H-ROM
+        7: EXTENDER-ESTANCIA ROMA H-ROM
+        8: FINALIZAR-VIAJE ROMA
+
+time spent:    0.00 seconds instantiating 85 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 24 facts and 85 actions
+               0.00 seconds creating final representation with 24 relevant facts, 7 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 23 states, to a max depth of 0
+               0.00 seconds total time
