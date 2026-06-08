@@ -41,7 +41,7 @@
     (vuelo londres paris)   (= (precio-vuelo londres paris) 85)
     (vuelo roma londres)    (= (precio-vuelo roma londres) 75)
 
-    ;; Connexiones alternativas (per donar joc a l'Extensió 4, optimització)
+    ;; Connexiones alternativas 
     (vuelo barcelona roma)  (= (precio-vuelo barcelona roma) 120)
     (vuelo roma barcelona)  (= (precio-vuelo roma barcelona) 110)
     (vuelo paris roma)      (= (precio-vuelo paris roma) 90)
