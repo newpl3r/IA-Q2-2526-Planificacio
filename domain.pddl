@@ -70,7 +70,6 @@
         (vuelo ?orig ?dest)
         (not (visitada ?dest))
         (hotel-en ?h-new ?dest)
-        ;; RESTRICCIÓN CLAVE: Verificar estancia mínima antes de salir
         (>= (dias-estancia-actual) (min-dias-ciudad ?orig))
         (not (viaje-finalizado))
     )
