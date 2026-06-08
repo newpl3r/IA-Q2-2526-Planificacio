@@ -12,6 +12,7 @@
     (alojado ?h - hotel)
     (viaje-iniciado)
     (vuelo ?c1 ?c2 - ciudad)
+    (viaje-finalizado)
   )
 
   (:functions
@@ -36,11 +37,16 @@
         (en ?c)
         (visitada ?c)
         (alojado ?h)
-        (assign (total-precio) (precio-hotel ?h))
-        (assign (total-interes) (interes-ciudad ?c))
-        (assign (total-dias) 1)
-        (assign (dias-estancia-actual) 1)
-        (assign (num-ciudades-visitadas) 1)
+        ;;(assign (total-precio) (precio-hotel ?h))
+        ;;(assign (total-interes) (interes-ciudad ?c))
+        ;;(assign (total-dias) 1)
+        ;;(assign (dias-estancia-actual) 1)
+        ;;(assign (num-ciudades-visitadas) 1)
+        (increase (total-precio) (precio-hotel ?h))    ;; <-- Cambiado
+        (increase (total-interes) (interes-ciudad ?c)) ;; <-- Cambiado
+        (increase (total-dias) 1)                      ;; <-- Cambiado
+        (increase (dias-estancia-actual) 1)            ;; <-- Cambiado
+        (increase (num-ciudades-visitadas) 1)          ;; <-- Cambiado
     )
   )
 
@@ -51,6 +57,7 @@
         (en ?c) 
         (alojado ?h)
         (< (dias-estancia-actual) (max-dias-ciudad ?c))
+        (not (viaje-finalizado))
     )
     :effect (and
         (increase (total-dias) 1)
@@ -61,17 +68,20 @@
 
   ;; Volar: Solo si hemos cumplido la estancia mínima (MIN-DIAS)
   (:action volar-y-alojarse
-    :parameters (?orig - ciudad ?dest - ciudad ?h-new - hotel)
+    :parameters (?orig - ciudad ?dest - ciudad ?h-old - hotel ?h-new - hotel)
     :precondition (and
         (en ?orig)
+        (alojado ?h-old)
         (vuelo ?orig ?dest)
         (not (visitada ?dest))
         (hotel-en ?h-new ?dest)
         ;; RESTRICCIÓN CLAVE: Verificar estancia mínima antes de salir
         (>= (dias-estancia-actual) (min-dias-ciudad ?orig))
+        (not (viaje-finalizado))
     )
     :effect (and
         (not (en ?orig))
+        (not (alojado ?h-old))
         (en ?dest)
         (visitada ?dest)
         (alojado ?h-new)
@@ -80,6 +90,18 @@
         (increase (total-dias) 1)
         (assign (dias-estancia-actual) 1)
         (increase (num-ciudades-visitadas) 1)
+    )
+  )
+
+  ;; Finalizar el viaje: Se asegura de que la última ciudad cumple sus días mínimos
+  (:action finalizar-viaje
+    :parameters (?c - ciudad)
+    :precondition (and
+        (en ?c)
+        (>= (dias-estancia-actual) (min-dias-ciudad ?c))
+    )
+    :effect (and
+        (viaje-finalizado)
     )
   )
 )

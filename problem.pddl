@@ -39,9 +39,11 @@
 
   (:goal
     (and
+      (viaje-finalizado)
       (>= (num-ciudades-visitadas) 3)
       (>= (total-dias) 6)
       (<= (total-precio) 1500)
+      (>= (total-precio) 500)
     )
   )
 

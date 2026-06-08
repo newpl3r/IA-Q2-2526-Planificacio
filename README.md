@@ -3,4 +3,4 @@
 
 
 ## Usage
-./ff -o domain.pddl -f problem.pddl
+./ff -O -o domain.pddl -f problem.pddl
