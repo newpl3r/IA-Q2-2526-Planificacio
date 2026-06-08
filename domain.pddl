@@ -42,11 +42,11 @@
         ;;(assign (total-dias) 1)
         ;;(assign (dias-estancia-actual) 1)
         ;;(assign (num-ciudades-visitadas) 1)
-        (increase (total-precio) (precio-hotel ?h))    ;; <-- Cambiado
-        (increase (total-interes) (interes-ciudad ?c)) ;; <-- Cambiado
-        (increase (total-dias) 1)                      ;; <-- Cambiado
-        (increase (dias-estancia-actual) 1)            ;; <-- Cambiado
-        (increase (num-ciudades-visitadas) 1)          ;; <-- Cambiado
+        (increase (total-precio) (precio-hotel ?h))    
+        (increase (total-interes) (interes-ciudad ?c)) 
+        (increase (total-dias) 1)                     
+        (increase (dias-estancia-actual) 1)            
+        (increase (num-ciudades-visitadas) 1)         
     )
   )
 
